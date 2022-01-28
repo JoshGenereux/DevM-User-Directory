@@ -1,13 +1,26 @@
 import './App.css';
 import Card from "./Card";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import data from './data.js';
 
 function App() {
   const [card, setCard] = useState(false);
+  const [users, setUsers] = useState([])
+  const [count, setCount] = useState(0)
+
+  console.log(`app count = ${count}`)
 
   const handleClick=()=>{
     setCard(!card)
   }
+
+  const getData = ()=>{
+    setUsers(data)
+  }
+
+  useEffect(() =>{
+    getData();
+  },[])
 
   return (
     <div className="App">
@@ -19,7 +32,11 @@ function App() {
       <button
         onClick={handleClick}
         className='show-btn'>Show Users</button>
-      {card === true ? <Card/> : null}
+      {card === true ?
+        <Card
+          count={count} setCount={setCount}
+          users={users} setUsers={setUsers}/>
+        : null}
     </div>
   );
 }
