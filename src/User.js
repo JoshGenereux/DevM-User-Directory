@@ -1,14 +1,15 @@
-import React, {useEffect} from "react";
-import data from './data';
+import React from "react";
 
 
 const User = ({users, count}) =>{
 
-
+  if(users.length < 1){
+    return <h1 className='.sorry'>Sorry No Users</h1>
+  }
 
   return(
     <div className='user-container'>
-      <h1 className='number'>{users[count].id}/{users.length}</h1>
+      <h1 className='number'>{count +1}/{users.length}</h1>
       <h1 className='user-h1'>{users[count].name.first} {users[count].name.last}</h1>
       <ul className='user-info-list'>
         <li className='user-info-li'>

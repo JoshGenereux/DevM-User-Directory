@@ -188,3 +188,9 @@
      font-family: 'Roboto', sans-serif;
      font-weight: bolder;
  }
+
+ .sorry {
+     z-index: 5;
+     color: white;
+     font-size: 55px;
+ }

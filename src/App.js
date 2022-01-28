@@ -8,7 +8,6 @@ function App() {
   const [users, setUsers] = useState([])
   const [count, setCount] = useState(0)
 
-  console.log(`app count = ${count}`)
 
   const handleClick=()=>{
     setCard(!card)
@@ -34,6 +33,7 @@ function App() {
         className='show-btn'>Show Users</button>
       {card === true ?
         <Card
+          handleClick={handleClick}
           count={count} setCount={setCount}
           users={users} setUsers={setUsers}/>
         : null}
