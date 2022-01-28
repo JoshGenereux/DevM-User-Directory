@@ -1,14 +1,25 @@
 import './App.css';
 import Card from "./Card";
+import {useState} from "react";
 
 function App() {
+  const [card, setCard] = useState(false);
+
+  const handleClick=()=>{
+    setCard(!card)
+  }
+
   return (
     <div className="App">
       <header>
-        <h2 className='header-h2'>Home</h2>
+        <button
+          onClick={handleClick}
+          className='header-h2'>Home</button>
       </header>
-      <button className='show-btn'>Show Users</button>
-      <Card/>
+      <button
+        onClick={handleClick}
+        className='show-btn'>Show Users</button>
+      {card === true ? <Card/> : null}
     </div>
   );
 }

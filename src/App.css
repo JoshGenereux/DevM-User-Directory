@@ -34,9 +34,19 @@
  }
  .header-h2{
      margin-left: 5vw;
+     background: none;
+     border: none;
+     color: black;
+     font-size: 25px;
+     cursor: pointer;
+ }
+ .header-h2:hover{
+     font-size: 30px;
+     text-decoration: underline;
  }
 
  .card{
+     z-index: 2;
      top: 50vh;
      left: 50vw;
      position: absolute;
