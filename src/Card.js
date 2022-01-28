@@ -1,21 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 import User from './User';
 
 const Card = ({users, setUsers, count, setCount}) =>{
 
   const handleNext= ()=>{
-    if(count < 25){
-      setCount(count++)
+    if(count < 24){
+      setCount(++count)
     }
   }
 
   const handlePrev=()=>{
     console.log('prev')
     console.log(count)
-    if(count >= 0){
-      setCount(count--);
+    if(count > 0){
+      setCount(--count);
     }
   }
+
+
+
 
   return (
     <div className='card'>
