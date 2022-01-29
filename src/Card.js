@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import User from './User';
+import New from "./New";
 
-const Card = ({users, setUsers, count, setCount, handleClick}) =>{
+const Card = ({users, setUsers, count, setCount, handleClick, input, setInput}) =>{
+
+  const [newCard, setNewCard] = useState(false)
 
   const handleNext= ()=>{
     if(count < users.length -1){
@@ -16,8 +19,6 @@ const Card = ({users, setUsers, count, setCount, handleClick}) =>{
   }
 
   const handleDelete=()=> {
-    console.log(`count = ${count}`)
-    console.log(`users.length = ${users.length}`)
     if (users.length > 1 && count < users.length-1) {
       let array = [...users]
       array.splice(count, 1)
@@ -29,28 +30,41 @@ const Card = ({users, setUsers, count, setCount, handleClick}) =>{
     }
   }
 
+  const handleNew = () =>{
+    setNewCard(!newCard)
+  }
+
   return (
     <div className='card'>
-      <section className='card-sect'>
-        <User
-          count={count} setCount={setCount}
-          users={users} setUser={setUsers}/>
-      </section>
-      <footer className='card-foot'>
+      {newCard === true ?
+        <New
+          users={users} setUsers={setUsers}
+          input={input} setInput={setInput}
+        />
+        : <section className='card-sect'>
+          <User
+            count={count} setCount={setCount}
+            users={users} setUser={setUsers}/>
+        </section> }
+
+        <footer className='card-foot'>
         <button
           onClick={handlePrev}
           className='previous'>&#60; Previous</button>
         <div className='ede'>
-          <button className='ede-btn'>Edit</button>
-          <button
-            onClick={handleDelete}
-            className='ede-btn delete'>Delete</button>
-          <button className='ede-btn'>New</button>
+        <button
+          className='ede-btn'>Edit</button>
+        <button
+          onClick={handleDelete}
+          className='ede-btn delete'>Delete</button>
+        <button
+          onClick={handleNew}
+          className='ede-btn'>New</button>
         </div>
         <button
           onClick={handleNext}
           className='next'>Next &#62;</button>
-      </footer>
+        </footer>
     </div>
   )
 }

@@ -7,7 +7,17 @@ function App() {
   const [card, setCard] = useState(false);
   const [users, setUsers] = useState([])
   const [count, setCount] = useState(0)
-
+  const [input, setInput] = useState({
+    id: undefined,
+    name: {first: '', last: ''},
+    city: '',
+    country: '',
+    employer: '',
+    title: '',
+    favoriteMovies: [
+      '','',''
+    ]
+  })
 
   const handleClick=()=>{
     setCard(!card)
@@ -33,6 +43,7 @@ function App() {
         className='show-btn'>Show Users</button>
       {card === true ?
         <Card
+          input={input} setInput={setInput}
           handleClick={handleClick}
           count={count} setCount={setCount}
           users={users} setUsers={setUsers}/>
