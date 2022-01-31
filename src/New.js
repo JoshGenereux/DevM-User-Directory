@@ -1,25 +1,23 @@
 import React, {useEffect, useState} from "react";
 
-const New = ({input, setInput, users, setUsers})=>{
+const New = ({input, setInput, users, setUsers, setNewCard})=>{
 
   const [movie1, setMovie1] = useState('')
   const [movie2, setMovie2] = useState('')
   const [movie3, setMovie3] = useState('')
-  const [movieArray, setMovieArray] = useState([])
 
   const onSubmit=(e)=>{
     e.preventDefault();
-    setMovieArray([movie1, movie2, movie3]);
-    setInput({...input, favoriteMovies: [...movieArray]})
-    setUsers({...users, input})
+    let inp = {...input}
+    setUsers([...users, {...inp, favoriteMovies: [movie1, movie2, movie3]}])
+    setNewCard(false)
   }
-  console.log(users)
 
   useEffect(()=>{
     setInput({
       id: users.length +1
     })
-  },[])
+  },[setUsers])
 
   const handleFirst=(e)=> {
     setInput({...input, name: {

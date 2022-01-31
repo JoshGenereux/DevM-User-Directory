@@ -38,6 +38,7 @@ const Card = ({users, setUsers, count, setCount, handleClick, input, setInput}) 
     <div className='card'>
       {newCard === true ?
         <New
+          setNewCard={setNewCard}
           users={users} setUsers={setUsers}
           input={input} setInput={setInput}
         />
