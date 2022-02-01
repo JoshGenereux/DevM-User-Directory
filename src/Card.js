@@ -19,7 +19,7 @@ const Card = ({users, setUsers, count, setCount, handleClick, input, setInput}) 
   }
 
   const handleDelete=()=> {
-    if (users.length > 1 && count < users.length-1) {
+    if (users.length > 1 && count < users.length -1) {
       let array = [...users]
       array.splice(count, 1)
       setUsers([...array])
@@ -28,6 +28,8 @@ const Card = ({users, setUsers, count, setCount, handleClick, input, setInput}) 
       handleClick();
       setUsers([])
     }
+    console.log(`length = ${users.length}`)
+    console.log(`count = ${count}`)
   }
 
   const handleNew = () =>{
@@ -38,6 +40,7 @@ const Card = ({users, setUsers, count, setCount, handleClick, input, setInput}) 
     <div className='card'>
       {newCard === true ?
         <New
+          count={count} setCount={setCount}
           setNewCard={setNewCard}
           users={users} setUsers={setUsers}
           input={input} setInput={setInput}

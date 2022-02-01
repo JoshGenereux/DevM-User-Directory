@@ -17,6 +17,7 @@ const New = ({input, setInput, users, setUsers, setNewCard})=>{
     setInput({
       id: users.length +1
     })
+
   },[setUsers])
 
   const handleFirst=(e)=> {
